@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\natis\\Desktop\\Front\\Presentacion\\Presentacion.csproj",
+      "projectUniqueName": "C:\\Users\\natis\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj",
       "projectName": "Presentacion",
-      "projectPath": "C:\\Users\\natis\\Desktop\\Front\\Presentacion\\Presentacion.csproj",
+      "projectPath": "C:\\Users\\natis\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj",
       "packagesPath": "C:\\Users\\natis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\natis\\Desktop\\Front\\Presentacion\\obj\\",
+      "outputPath": "C:\\Users\\natis\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\natis\\AppData\\Roaming\\NuGet\\NuGet.Config"
