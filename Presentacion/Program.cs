@@ -1,4 +1,10 @@
+using JaveFamilia.Controllers;
+
+
 var builder = WebApplication.CreateBuilder(args);
+
+
+builder.Services.AddHttpClient<EspaciosController>();
 
 // Add services to the container.
 builder.Services.AddRazorPages();
