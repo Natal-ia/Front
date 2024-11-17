@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\natis\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj": {}
+    "/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Presentacion.csproj": {}
   },
   "projects": {
-    "C:\\Users\\natis\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj": {
+    "/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Presentacion.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\natis\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj",
+        "projectUniqueName": "/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Presentacion.csproj",
         "projectName": "Presentacion",
-        "projectPath": "C:\\Users\\natis\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj",
-        "packagesPath": "C:\\Users\\natis\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\natis\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\obj\\",
+        "projectPath": "/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Presentacion.csproj",
+        "packagesPath": "/home/ubuntu-naing/.nuget/packages/",
+        "outputPath": "/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\natis\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "/home/ubuntu-naing/.nuget/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -32,16 +32,17 @@
           "warnAsError": [
             "NU1605"
           ]
-        },
-        "restoreAuditProperties": {
-          "enableAudit": "true",
-          "auditLevel": "low",
-          "auditMode": "direct"
         }
       },
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
+          "dependencies": {
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -61,7 +62,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
