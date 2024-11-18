@@ -46,7 +46,7 @@ public class LoginModel : PageModel
                 // Manejar la respuesta en caso de éxito
                 var result = await response.Content.ReadAsStringAsync();
                 // Redirigir a la página de destino en caso de login exitoso
-                return RedirectToPage("/Dashboard"); // Cambia a tu página de destino
+                return RedirectToPage("/Espacios"); // Cambia a tu página de destino
             }
             else
             {

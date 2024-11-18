@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "O4nq7mSJN0jfv+efmrEloQ0iMWU9+qJUEUoPgC5spS0Q8zYGWmNDyhR6xOL4+QKOVawaaZG6G2ptoeq5MxhoOA==",
+  "dgSpecHash": "1IC/9IjutmM=",
   "success": true,
-  "projectFilePath": "/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Presentacion.csproj",
+  "projectFilePath": "C:\\Users\\natis\\Documents\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj",
   "expectedPackageFiles": [
-    "/home/ubuntu-naing/.nuget/packages/newtonsoft.json/13.0.3/newtonsoft.json.13.0.3.nupkg.sha512"
+    "C:\\Users\\natis\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512"
   ],
   "logs": []
 }
