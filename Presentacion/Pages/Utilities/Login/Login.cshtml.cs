@@ -48,7 +48,7 @@ public class LoginModel : PageModel
                     // Si la solicitud es exitosa, redirige al dashboard
                     Console.WriteLine(response.Content.ReadAsStringAsync().Result);
 
-                    return RedirectToPage("/Dashboard"); // Asegúrate de que esta ruta sea la correcta
+                    return RedirectToPage("/Utilities/Espacios/Espacios"); // Asegúrate de que esta ruta sea la correcta
                 }
                 else
                 {

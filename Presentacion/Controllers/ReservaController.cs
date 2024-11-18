@@ -1,5 +1,7 @@
-/*using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using JaveFamilia.Models;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace JaveFamilia.Controllers
 {
@@ -9,89 +11,56 @@ namespace JaveFamilia.Controllers
     {
         private static List<Reserva> reservas = new List<Reserva>();
 
-       [HttpPut]
-public IActionResult Put([FromBody] Reserva nuevaReserva)
-{
-    if (string.IsNullOrEmpty(nuevaReserva.UsuarioID) || 
-        string.IsNullOrEmpty(nuevaReserva.EspacioID) || 
-        string.IsNullOrEmpty(nuevaReserva.HorarioID))
-    {
-        return BadRequest(new { message = "Datos incompletos para la reserva." });
-    }
+        [HttpPut]
+        [Authorize]
+        public IActionResult Put([FromBody] Reserva nuevaReserva)
 
-    nuevaReserva.EstadoPago = EstadoPago.Exitoso; // Asumiendo que se procesa correctamente
-
-    // Simulación de auto-incremento usando base de datos
-    reservas.Add(nuevaReserva);
-
-    return Ok(nuevaReserva);
-}
-
-
-        [HttpGet("{usuarioID}")]
-        public IActionResult GetByUsuario(string usuarioID)
         {
-            var userReservas = reservas.Where(r => r.UsuarioID == usuarioID).ToList();
-            return Ok(userReservas);
-        }
-    }
-}*/
-using Microsoft.AspNetCore.Mvc;
-using JaveFamilia.Models;
-using System.Linq;
-using System.Collections.Generic;
-using System;
+            // Obtiene el ID del usuario desde el token JWT
+            var authHeader = HttpContext.Request.Headers["Authorization"].ToString();
+            if (string.IsNullOrEmpty(authHeader)) return Unauthorized(new { message = "No token provided." });
 
-namespace JaveFamilia.Controllers
-{
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ReservaController : ControllerBase
-    {
-        public static List<Reserva> Reservas = new List<Reserva>
-        {
-            new Reserva
+            var token = authHeader.Replace("Bearer ", "");
+            var handler = new JwtSecurityTokenHandler();
+            var jsonToken = handler.ReadToken(token) as JwtSecurityToken;
+            var userId = jsonToken?.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value;
+
+            if (userId == null) return Unauthorized(new { message = "Invalid token." });
+
+            // Valida los datos de la reserva
+            if (string.IsNullOrEmpty(nuevaReserva.EspacioID) || string.IsNullOrEmpty(nuevaReserva.HorarioID))
             {
-                Id = 1,
-                UsuarioID = "user123",
-                EspacioID = "Espacio A",
-                HorarioID = "10:00 AM - 11:00 AM",
-                FechaAgendamiento = DateTime.Now,
-                FechaReserva = DateTime.Now.AddDays(1),
-                EstadoPago = EstadoPago.Exitoso
-            },
-            new Reserva
-            {
-                Id = 2,
-                UsuarioID = "user123",
-                EspacioID = "Espacio B",
-                HorarioID = "2:00 PM - 3:00 PM",
-                FechaAgendamiento = DateTime.Now,
-                FechaReserva = DateTime.Now.AddDays(2),
-                EstadoPago = EstadoPago.Pendiente
-            },
-            new Reserva
-            {
-                Id = 3,
-                UsuarioID = "user456",
-                EspacioID = "Espacio C",
-                HorarioID = "4:00 PM - 5:00 PM",
-                FechaAgendamiento = DateTime.Now,
-                FechaReserva = DateTime.Now.AddDays(3),
-                EstadoPago = EstadoPago.Rechazado
+                return BadRequest(new { message = "Datos incompletos para la reserva." });
             }
-        };
 
-        public static List<Reserva> GetReservas()
-        {
-            return Reservas;
+            nuevaReserva.UsuarioID = userId;
+            nuevaReserva.EstadoPago = EstadoPago.Exitoso; // Simulación de éxito
+            nuevaReserva.Id = reservas.Count + 1; // Simulación de ID autoincremental
+
+            reservas.Add(nuevaReserva);
+            return Ok(nuevaReserva);
         }
 
-        [HttpGet("{usuarioID}")]
-        public IActionResult GetByUsuario(string usuarioID)
+        [HttpGet]
+        [Authorize]
+        public IActionResult Get()
         {
-            var userReservas = Reservas.Where(r => r.UsuarioID == usuarioID).ToList();
-            return Ok(userReservas);
+            // Obtiene el ID del usuario desde el token JWT
+            var authHeader = HttpContext.Request.Headers["Authorization"].ToString();
+            if (string.IsNullOrEmpty(authHeader)) return Unauthorized(new { message = "No token provided." });
+
+            var token = authHeader.Replace("Bearer ", "");
+            var handler = new JwtSecurityTokenHandler();
+            var jsonToken = handler.ReadToken(token) as JwtSecurityToken;
+            var userId = jsonToken?.Claims.FirstOrDefault(claim => claim.Type == "sub")?.Value;
+
+            if (userId == null) return Unauthorized(new { message = "Invalid token." });
+
+            // Filtra las reservas del usuario
+            var userReservations = reservas.Where(r => r.UsuarioID == userId).ToList();
+            return Ok(userReservations);
         }
-    }
+
+        }
+
 }

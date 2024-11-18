@@ -13,11 +13,11 @@
 
 @if (Model.Reservas.Any())
 {
-    <ul id="spacesList">
+    <ul id="reservasList">
         @foreach (var reserva in Model.Reservas)
         {
-            <li class="space-item">
-                <div class="space-info">
+            <li class="reserva-item">
+                <div class="reserva-info">
                     <h2>Espacio: @reserva.EspacioID</h2>
                     <p><strong>Horario:</strong> @reserva.HorarioID</p>
                     <p><strong>Fecha de Reserva:</strong> @reserva.FechaReserva.ToShortDateString()</p>

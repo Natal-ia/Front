@@ -4,12 +4,9 @@
     ViewData["Title"] = "Espacios Disponibles";
 }
 
-
 <head>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
-
-
 
 <h1>Espacios Disponibles</h1>
 
@@ -39,7 +36,7 @@
                     {
                         <li>
                             <span>@horario.StartTime - @horario.EndTime</span>
-                            @if (horario.Availavility)
+                            @if (horario.Availability)
                             {
                                 <button onclick="makeReservation('@espacio.Id', '@horario.Id')" class="btn btn-primary">Reservar</button>
                             }
@@ -55,11 +52,10 @@
     }
 </ul>
 
-
 <script>
     // Mostrar/ocultar horarios
     function toggleHorario(id) {
-        const horarios = document.getElementById(horarios-${id});
+        const horarios = document.getElementById(`horarios-${id}`);
         horarios.style.display = horarios.style.display === "none" ? "block" : "none";
     }
 
@@ -74,33 +70,29 @@
     }
 
     async function makeReservation(espacioId, horarioId) {
-        const usuarioID = "usuario123"; // Ejemplo: Obtén esto dinámicamente
+        // Reserva sin ID, el backend lo genera automáticamente
         const reserva = {
-            usuarioID: usuarioID,
             espacioID: espacioId,
             horarioID: horarioId,
             fechaAgendamiento: new Date().toISOString(),
-            fechaReserva: new Date().toISOString(),
-            estadoPago: "Pendiente"
+            fechaReserva: new Date().toISOString()
         };
 
         const response = await fetch('/api/reserva', {
             method: 'PUT',
             headers: {
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${localStorage.getItem("jwt_token")}`
             },
             body: JSON.stringify(reserva)
         });
 
-        const result = await response.json();
-
         if (response.ok) {
             alert("Reserva exitosa!");
-            // Marcar espacio como no disponible en la interfaz
-            location.reload();
+            location.reload(); // Recarga la página para reflejar cambios
         } else {
-            alert("Hubo un problema con la reserva: " + result.message);
+            const error = await response.json();
+            alert("Error: " + error.message);
         }
     }
 </script>
-

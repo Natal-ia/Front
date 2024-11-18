@@ -4,7 +4,7 @@ using System.Text.Json.Serialization;
 namespace JaveFamilia.Models
 {
         public class Espacio
-         {
+        {
         public string Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
