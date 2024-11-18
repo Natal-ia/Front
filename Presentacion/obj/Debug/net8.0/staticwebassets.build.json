@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "J6ljkAw4p6j3OZix07yq05YHcBeWKi2S5ytOlhOKFvg=",
+  "Hash": "1BFwX4mMDhr59HKsmBgm53vtUlhkLJWXzkjJ1a+M5pI=",
   "Source": "Presentacion",
   "BasePath": "_content/Presentacion",
   "Mode": "Default",
@@ -72,6 +72,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
+    },
+    {
+      "Identity": "C:\\Users\\natis\\Documents\\JaveFamilia-Presentacion\\Presentacion\\wwwroot\\css\\styles.css",
+      "SourceId": "Presentacion",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\natis\\Documents\\JaveFamilia-Presentacion\\Presentacion\\wwwroot\\",
+      "BasePath": "_content/Presentacion",
+      "RelativePath": "css/styles.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\styles.css"
     },
     {
       "Identity": "C:\\Users\\natis\\Documents\\JaveFamilia-Presentacion\\Presentacion\\wwwroot\\favicon.ico",

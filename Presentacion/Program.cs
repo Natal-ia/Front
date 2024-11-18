@@ -4,7 +4,7 @@ using JaveFamilia.Controllers;
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient<EspaciosController>();
-
+builder.Services.AddHttpClient<ReservaController>();
 // Add services to the container.
 builder.Services.AddRazorPages();
 

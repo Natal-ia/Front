@@ -1,0 +1,37 @@
+@page
+@model JaveFamilia.Pages.VerReservasModel
+@using JaveFamilia.Models
+
+@{
+    ViewData["Title"] = "Mis Reservas";
+}
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+<h1>Mis Reservas</h1>
+
+@if (Model.Reservas.Any())
+{
+    <ul id="spacesList">
+        @foreach (var reserva in Model.Reservas)
+        {
+            <li class="space-item">
+                <div class="space-info">
+                    <h2>Espacio: @reserva.EspacioID</h2>
+                    <p><strong>Horario:</strong> @reserva.HorarioID</p>
+                    <p><strong>Fecha de Reserva:</strong> @reserva.FechaReserva.ToShortDateString()</p>
+                    <p><strong>Estado de Pago:</strong> 
+                        <span class="@(reserva.EstadoPago == EstadoPago.Exitoso ? "success" : reserva.EstadoPago == EstadoPago.Pendiente ? "pending" : "failed")">
+                            @reserva.EstadoPago
+                        </span>
+                    </p>
+                </div>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>No tienes reservas registradas.</p>
+}

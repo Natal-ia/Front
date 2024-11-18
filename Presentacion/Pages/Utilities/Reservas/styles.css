@@ -1,0 +1,131 @@
+
+/* Estilo general de los elementos */
+.space-item {
+    padding: 2vw;   
+    margin: 2vw 0;
+    border-radius: 1vw;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    transition: 0.3s;
+}
+
+/* Spaces list */
+#spacesList{
+ padding-left:0px;
+ transform:translatex(0px) translatey(0px);
+}
+
+.space-item:hover {
+    box-shadow: 0 0 1.5rem #D1F2E0;
+    cursor: pointer;
+}
+
+.space-info {
+    flex: 3;
+    padding-right: 2vw;
+}
+
+.space-info p {
+    padding-left: 0.5vw;
+}
+
+.horarios-container {
+    flex: 2;
+    background-color: var(--background-color);
+    border-radius: 1vw;
+    border-color: #B5EAEA;
+    box-shadow: 0 0 15px #D1F2E005;
+}
+
+.horarios-container h3 {
+    text-align: center;
+    
+    border-radius: 1vw;
+    
+    margin-bottom: 1vw;
+}
+
+h2 {
+    border-radius: 1vw;
+    padding: 0.5vw;
+    margin-bottom: 1vw;
+    border-width: 0.1vw #B5EAEA;
+    background-color: #B5EAEA;
+    width: 20vw;
+}
+
+.horarios {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.horarios li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.8vw;
+    padding: 0.5vw;
+    border-radius: 0.5vw;
+    border: #B5EAEA 0.2vw solid;
+    background-color: white;
+}
+
+.horarios li span {
+    font-weight: 500;
+    color: black;
+}
+
+.btn {
+    padding: 0.3vw 1vw;
+    border-radius: 1vw;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.btn-primary {
+    background-color: #B5EAEA;
+    color: black;
+    border: 0.1vw solid #B5EAEA;
+}
+
+.btn-primary:hover {
+    background-color: #D1F2E0;
+    border-color: transparent;
+    color: black;
+}
+
+.btn-secondary {
+    background-color: var(--background-color);
+    color: black;
+    border: 0.1vw solid #B5EAEA;
+}
+
+.btn-secondary:hover {
+    background-color: #B5EAEA;
+    color: white;
+}
+
+/* Barra de búsqueda */
+.search-bar {
+    border-radius: 1vw;
+    border-style: none;
+    background-color: #b5eaea80;
+    padding: 0.5vw;
+    margin-bottom: 1vw;
+    margin-top: 1vw;
+    border: #B5EAEA 0.2vw solid;
+    width:100% !important;
+    font-size: 1.2vw;
+    transition: box-shadow 0.3s ease;
+}
+
+.search-bar:focus {
+    box-shadow: 0 0 10px #B5EAEA;
+    outline: none;
+}
+
+

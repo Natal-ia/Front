@@ -3,9 +3,12 @@
 @{
     ViewData["Title"] = "Espacios Disponibles";
 }
+
+
 <head>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
+
 
 
 <h1>Espacios Disponibles</h1>
@@ -38,7 +41,7 @@
                             <span>@horario.StartTime - @horario.EndTime</span>
                             @if (horario.Availavility)
                             {
-                                <button onclick="location.href='Reserva?horarioId=@horario.Id'" class="btn btn-primary">Reservar</button>
+                                <button onclick="makeReservation('@espacio.Id', '@horario.Id')" class="btn btn-primary">Reservar</button>
                             }
                             else
                             {
@@ -68,6 +71,36 @@
             const spaceName = item.querySelector("h2").textContent.toLowerCase();
             item.style.display = spaceName.includes(query) ? "block" : "none";
         });
+    }
+
+    async function makeReservation(espacioId, horarioId) {
+        const usuarioID = "usuario123"; // Ejemplo: Obtén esto dinámicamente
+        const reserva = {
+            usuarioID: usuarioID,
+            espacioID: espacioId,
+            horarioID: horarioId,
+            fechaAgendamiento: new Date().toISOString(),
+            fechaReserva: new Date().toISOString(),
+            estadoPago: "Pendiente"
+        };
+
+        const response = await fetch('/api/reserva', {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(reserva)
+        });
+
+        const result = await response.json();
+
+        if (response.ok) {
+            alert("Reserva exitosa!");
+            // Marcar espacio como no disponible en la interfaz
+            location.reload();
+        } else {
+            alert("Hubo un problema con la reserva: " + result.message);
+        }
     }
 </script>
 
