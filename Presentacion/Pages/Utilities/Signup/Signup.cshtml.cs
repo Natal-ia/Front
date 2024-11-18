@@ -80,7 +80,7 @@ public class SignupModel : PageModel
         {
             try
             {
-                var response = await client.PostAsync("http://eva:5050/register", content);
+                var response = await client.PostAsync("http://eva00:5050/register-na", content);
 
                 if (response.IsSuccessStatusCode)
                 {
@@ -90,14 +90,16 @@ public class SignupModel : PageModel
                 else
                 {
                     // Si la solicitud falla, muestra un mensaje de error
-                    ModelState.AddModelError(string.Empty, "Error en el registro: " + response.ReasonPhrase);
+                    ModelState.AddModelError(string.Empty, "Error en el registro: " + response);
                     return Page();
                 }
             }
             catch (HttpRequestException ex)
             {
                 // Manejar errores de red o problemas con el servidor
-                ModelState.AddModelError(string.Empty, "Error de red o problema con el servidor: " + ex.Message);
+
+
+                ModelState.AddModelError(string.Empty, "Error de red o problema con el servidor: " + ex);
                 return Page();
             }
         }
