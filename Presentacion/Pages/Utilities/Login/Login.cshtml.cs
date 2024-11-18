@@ -18,6 +18,9 @@ public class LoginModel : PageModel
     [Required(ErrorMessage = "La contraseña es obligatoria.")]
     public string? Password { get; set; }
 
+    // Propiedad para el rol del usuario
+    public string? UserRole { get; set; }
+
     // Método Login para manejar la solicitud POST
     public async Task<IActionResult> OnPostAsync()
     {
@@ -39,21 +42,38 @@ public class LoginModel : PageModel
         {
             try
             {
-                Console.WriteLine(content.ReadAsStringAsync().Result);
-
                 var response = await client.PostAsync("http://eva00:5050/login", content);
 
                 if (response.IsSuccessStatusCode)
                 {
-                    // Si la solicitud es exitosa, redirige al dashboard
-                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
-                    return RedirectToPage("/espacios"); // Asegúrate de que esta ruta sea la correcta
+                    // Leer la respuesta del servidor
+                    var responseBody = await response.Content.ReadAsStringAsync();
+                    var responseData = JsonSerializer.Deserialize<LoginResponse>(responseBody);
+
+                    // Asumir que la respuesta incluye información sobre el rol del usuario
+                    UserRole = responseData?.Role;
+
+                    // Verificar el rol del usuario
+                    if (UserRole == "Administrador")
+                    {
+                        // Redirige al dashboard de administrador
+                        return RedirectToPage("/sedes");
+                    }
+                    else if (UserRole == "Afiliado")
+                    {
+                        // Redirige al dashboard de usuario
+                        return RedirectToPage("/espacios");
+                    }
+                    else
+                    {
+                        // Si el rol no es reconocido, muestra un error
+                        ModelState.AddModelError(string.Empty, "Acceso denegado. Rol no autorizado.");
+                        return Page();
+                    }
                 }
                 else
                 {
                     // Si la solicitud falla, muestra un mensaje de error
-                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
-
                     ModelState.AddModelError(string.Empty, "Error en el login: " + response.ReasonPhrase);
                     return Page();
                 }
@@ -65,5 +85,11 @@ public class LoginModel : PageModel
                 return Page();
             }
         }
+    }
+
+    // Clase para deserializar la respuesta del servidor
+    public class LoginResponse
+    {
+        public string? Role { get; set; }
     }
 }
