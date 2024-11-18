@@ -80,7 +80,7 @@ public class SignupModel : PageModel
         {
             try
             {
-                var response = await client.PostAsync("http://localhost:5050/register", content);
+                var response = await client.PostAsync("http://eva:5050/register", content);
 
                 if (response.IsSuccessStatusCode)
                 {

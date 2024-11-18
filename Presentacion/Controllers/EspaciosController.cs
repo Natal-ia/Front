@@ -17,7 +17,7 @@ namespace JaveFamilia.Controllers
 
         public async Task<List<Espacio>> GetEspaciosAsync()
         {
-            var response = await _httpClient.GetAsync("http://localhost:5050/api/espacio");
+            var response = await _httpClient.GetAsync("http://eva00:5050/api/espacio");
             response.EnsureSuccessStatusCode();
 
             var json = await response.Content.ReadAsStringAsync();

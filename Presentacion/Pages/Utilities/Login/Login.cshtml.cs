@@ -41,14 +41,14 @@ public class LoginModel : PageModel
             {
                 Console.WriteLine(content.ReadAsStringAsync().Result);
 
-                var response = await client.PostAsync("http://localhost:5050/login", content);
+                var response = await client.PostAsync("http://eva00:5050/login", content);
 
                 if (response.IsSuccessStatusCode)
                 {
                     // Si la solicitud es exitosa, redirige al dashboard
                     Console.WriteLine(response.Content.ReadAsStringAsync().Result);
 
-                    return RedirectToPage("/Dashboard"); // Asegúrate de que esta ruta sea la correcta
+                    return RedirectToPage("/espacios"); // Asegúrate de que esta ruta sea la correcta
                 }
                 else
                 {
