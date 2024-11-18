@@ -1,116 +1,72 @@
-@page
+@page "/signup"
 @model SignupModel
 @{
     ViewData["Title"] = "Bienvenido a JaveFamilia";
 }
 
-<div style="width: 100%; height: 100%; padding-top: 127px; padding-bottom: 128px; padding-left: 452px; padding-right: 451px; background: white; justify-content: center; align-items: center; display: inline-flex;">
-    <div style="width: 1017px; height: 825px; position: relative; flex-direction: column; justify-content: flex-start; align-items: flex-start; display: flex;">
-        <div style="width: 1017px; height: 789px; position: relative; background: white; border-radius: 24px; overflow: hidden; border: 1px rgba(102, 102, 102, 0.50) solid;">
-            <div style="left: 56px; top: 56px; position: absolute; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 40px; display: inline-flex;">
-                <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 16px; display: flex;">
-                    <div style="width: 48px; height: 48px; background: #C4C4C4; border-radius: 9999px;"></div>
-                    <div style="flex-direction: column; justify-content: center; align-items: flex-start; gap: 2px; display: flex;">
-                        <div style="color: #333333; font-size: 32px; font-family: Poppins; font-weight: 500; word-wrap: break-word;">Create an account</div>
-                        <div style="padding: 2px; justify-content: flex-start; align-items: flex-start; gap: 10px; display: inline-flex;">
-                            <div>
-                                <span style="color: #333333; font-size: 16px; font-family: Poppins; font-weight: 400; word-wrap: break-word;">Already have an account?</span>
-                                <span style="color: #111111; font-size: 16px; font-family: Poppins; font-weight: 400; text-decoration: underline; word-wrap: break-word;"> Log in </span>
-                            </div>
-                        </div>
+<div class="d-flex justify-content-center align-items-center min-vh-100 bg-white">
+    <div class="container p-5">
+        <div class="card shadow-sm p-4 rounded">
+            <div class="text-center mb-4">
+                <div class="rounded-circle bg-secondary mx-auto mb-3" style="width: 48px; height: 48px;"></div>
+                <h2 class="h4 font-weight-bold">Create an account</h2>
+                <p class="text-muted">
+                    Already have an account? <a href="/login" class="text-decoration-underline">Log in</a>
+                </p>
+            </div>
+
+            <!-- Mostrar mensajes de error generales -->
+            @if (!ModelState.IsValid)
+            {
+                <div class="alert alert-danger" role="alert">
+                    @foreach (var error in ModelState.Values.SelectMany(v => v.Errors))
+                    {
+                        <p>@error.ErrorMessage</p>
+                    }
+                </div>
+            }
+
+            <!-- Formulario de registro -->
+            <form method="post">
+                <div class="form-row mb-3">
+                    <div class="col">
+                        <label for="FirstName" class="text-muted">First name</label>
+                        <input id="FirstName" name="FirstName" class="form-control" asp-for="FirstName" required />
+                        <span class="text-danger" asp-validation-for="FirstName"></span>
+                    </div>
+                    <div class="col">
+                        <label for="LastName" class="text-muted">Last name</label>
+                        <input id="LastName" name="LastName" class="form-control" asp-for="LastName" required />
+                        <span class="text-danger" asp-validation-for="LastName"></span>
                     </div>
                 </div>
-                <!-- Formulario de registro -->
-                <form id="signupForm" onsubmit="signUp(event)">
-                    <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 24px; display: flex;">
-                        <div style="justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex;">
-                            <div style="width: 259px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex;">
-                                <label for="FirstName" style="color: #666666; font-size: 16px; font-family: Poppins; font-weight: 400;">First name</label>
-                                <input id="FirstName" name="FirstName" type="text" style="width: 259px; height: 56px; border-radius: 12px; border: 1px rgba(102, 102, 102, 0.35) solid;" required />
-                            </div>
-                            <div style="width: 259px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex;">
-                                <label for="LastName" style="color: #666666; font-size: 16px; font-family: Poppins; font-weight: 400;">Last name</label>
-                                <input id="LastName" name="LastName" type="text" style="width: 259px; height: 56px; border-radius: 12px; border: 1px rgba(102, 102, 102, 0.35) solid;" required />
-                            </div>
-                        </div>
-                        <div style="height: 87px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: flex;">
-                            <label for="Email" style="color: #666666; font-size: 16px; font-family: Poppins; font-weight: 400;">Email address</label>
-                            <input id="Email" name="Email" type="email" style="width: 534px; height: 56px; border-radius: 12px; border: 1px rgba(102, 102, 102, 0.35) solid;" required />
-                        </div>
-                        <div style="flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 8px; display: flex;">
-                            <div style="justify-content: flex-start; align-items: flex-start; gap: 16px; display: inline-flex;">
-                                <div style="width: 259px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex;">
-                                    <label for="Password" style="color: #666666; font-size: 16px; font-family: Poppins; font-weight: 400;">Password</label>
-                                    <input id="Password" name="Password" type="password" style="width: 259px; height: 56px; border-radius: 12px; border: 1px rgba(102, 102, 102, 0.35) solid;" required />
-                                </div>
-                                <div style="width: 259px; flex-direction: column; justify-content: flex-start; align-items: flex-start; gap: 4px; display: inline-flex;">
-                                    <label for="ConfirmPassword" style="color: #666666; font-size: 16px; font-family: Poppins; font-weight: 400;">Confirm your password</label>
-                                    <input id="ConfirmPassword" name="ConfirmPassword" type="password" style="width: 259px; height: 56px; border-radius: 12px; border: 1px rgba(102, 102, 102, 0.35) solid;" required />
-                                </div>
-                            </div>
-                            <div style="color: #666666; font-size: 16px; font-family: Poppins; font-weight: 400;">Use 8 or more characters with a mix of letters, numbers & symbols</div>
-                        </div>
-                        <button type="submit" style="width: 259px; height: 64px; background: #111111; border-radius: 32px; color: white; font-size: 22px; font-family: Poppins; font-weight: 500; text-align: center;">Sign Up</button>
+                <div class="form-group mb-3">
+                    <label for="Email" class="text-muted">Email address</label>
+                    <input id="Email" name="Email" type="email" class="form-control" asp-for="Email" required />
+                    <span class="text-danger" asp-validation-for="Email"></span>
+                </div>
+                <div class="form-row mb-3">
+                    <div class="col">
+                        <label for="Password" class="text-muted">Password</label>
+                        <input id="Password" name="Password" type="password" class="form-control" asp-for="Password" required />
+                        <span class="text-danger" asp-validation-for="Password"></span>
                     </div>
-                </form>
-            </div>
+                    <div class="col">
+                        <label for="ConfirmPassword" class="text-muted">Confirm your password</label>
+                        <input id="ConfirmPassword" name="ConfirmPassword" type="password" class="form-control" asp-for="ConfirmPassword" required />
+                        <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+                    </div>
+                </div>
+                <small class="form-text text-muted mb-3">
+                    Use 8 or more characters with a mix of letters, numbers & symbols
+                </small>
+                <button type="submit" class="btn btn-dark btn-block">Sign Up</button>
+            </form>
         </div>
-        <div style="justify-content: flex-start; align-items: flex-start; gap: 24px; display: inline-flex;">
-            <div style="color: #333333; font-size: 16px; font-family: Poppins; font-weight: 400;">Help</div>
-            <div style="color: #333333; font-size: 16px; font-family: Poppins; font-weight: 400;">Privacy</div>
-            <div style="color: #333333; font-size: 16px; font-family: Poppins; font-weight: 400;">Terms</div>
+        <div class="d-flex justify-content-between mt-4 text-muted">
+            <span>Help</span>
+            <span>Privacy</span>
+            <span>Terms</span>
         </div>
     </div>
 </div>
-
-<script>
-    async function signUp(event) {
-        event.preventDefault(); // Previene que el formulario se envíe de manera tradicional
-
-        // Obtén los valores de los campos de entrada
-        const firstName = document.getElementById("FirstName").value;
-        const lastName = document.getElementById("LastName").value;
-        const email = document.getElementById("Email").value;
-        const password = document.getElementById("Password").value;
-        const confirmPassword = document.getElementById("ConfirmPassword").value;
-
-        // Verifica si las contraseñas coinciden
-        if (password !== confirmPassword) {
-            alert("Passwords do not match");
-            return;
-        }
-
-        // Crea el objeto de datos
-        const data = {
-            firstName: firstName,
-            lastName: lastName,
-            email: email,
-            password: password
-        };
-
-        try {
-            // Realiza la solicitud POST
-            const response = await fetch("http://localhost:5050/signup", {
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify(data)
-            });
-
-            if (response.ok) {
-                // Manejar la respuesta en caso de éxito
-                const result = await response.json();
-                alert("SignUp exitoso: " + JSON.stringify(result));
-                // Puedes redirigir o realizar alguna acción adicional
-                window.location.href = "/welcome"; // Cambia la URL según tu página de destino
-            } else {
-                // Manejar errores
-                alert("Error en el registro: " + response.statusText);
-            }
-        } catch (error) {
-            console.error("Error en la solicitud:", error);
-            alert("Error de red o problema con el servidor.");
-        }
-    }
-</script>

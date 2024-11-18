@@ -55,19 +55,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\natis\\.nuget\\packages\\": {}
+    "/home/ubuntu-naing/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\natis\\Documents\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj",
+      "projectUniqueName": "/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Presentacion.csproj",
       "projectName": "Presentacion",
-      "projectPath": "C:\\Users\\natis\\Documents\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj",
-      "packagesPath": "C:\\Users\\natis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\natis\\Documents\\JaveFamilia-Presentacion\\Presentacion\\obj\\",
+      "projectPath": "/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Presentacion.csproj",
+      "packagesPath": "/home/ubuntu-naing/.nuget/packages/",
+      "outputPath": "/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\natis\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "/home/ubuntu-naing/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -85,11 +85,6 @@
         "warnAsError": [
           "NU1605"
         ]
-      },
-      "restoreAuditProperties": {
-        "enableAudit": "true",
-        "auditLevel": "low",
-        "auditMode": "direct"
       }
     },
     "frameworks": {
@@ -120,7 +115,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/8.0.110/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
