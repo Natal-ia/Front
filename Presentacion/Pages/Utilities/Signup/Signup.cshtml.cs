@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using System;
 using System.ComponentModel.DataAnnotations;
 using System.Net.Http;
 using System.Text;
@@ -23,6 +24,22 @@ public class SignupModel : PageModel
     public string? Email { get; set; }
 
     [BindProperty]
+    [Required(ErrorMessage = "La fecha de nacimiento es obligatoria.")]
+    public DateTime Birthday { get; set; }
+
+    [BindProperty]
+    [Required(ErrorMessage = "El número de teléfono es obligatorio.")]
+    public string? PhoneNumber { get; set; }
+
+    [BindProperty]
+    [Required(ErrorMessage = "El tipo de documento es obligatorio.")]
+    public string? TipoDocumento { get; set; }
+
+    [BindProperty]
+    [Required(ErrorMessage = "El número de documento es obligatorio.")]
+    public string? Document { get; set; }
+
+    [BindProperty]
     [Required(ErrorMessage = "La contraseña es obligatoria.")]
     [MinLength(8, ErrorMessage = "La contraseña debe tener al menos 8 caracteres.")]
     public string? Password { get; set; }
@@ -44,10 +61,14 @@ public class SignupModel : PageModel
         // Crear el objeto de datos para la solicitud
         var data = new
         {
+            email = Email,
+            password = Password,
             firstName = FirstName,
             lastName = LastName,
-            email = Email,
-            password = Password
+            birthday = Birthday.ToString("yyyy-MM-ddTHH:mm:ss.fffZ"),
+            phoneNumber = PhoneNumber,
+            tipoDocumento = TipoDocumento,
+            document = Document
         };
 
         // Convertir el objeto a JSON
@@ -70,8 +91,6 @@ public class SignupModel : PageModel
                 {
                     // Si la solicitud falla, muestra un mensaje de error
                     ModelState.AddModelError(string.Empty, "Error en el registro: " + response.ReasonPhrase);
-                    Console.WriteLine(response.Content.ReadAsStringAsync().Result);
-
                     return Page();
                 }
             }
