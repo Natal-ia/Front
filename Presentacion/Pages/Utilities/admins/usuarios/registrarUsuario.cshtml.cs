@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http; // Para HttpContext.Session
 
 public class RegistrarUsuarioModel : PageModel
 {
@@ -75,33 +76,41 @@ public class RegistrarUsuarioModel : PageModel
         var json = JsonSerializer.Serialize(data);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+        // Obtener el JWT desde la sesión
+        var jwtToken = HttpContext.Session.GetString("JWT");
+        if (string.IsNullOrEmpty(jwtToken))
+        {
+            ModelState.AddModelError(string.Empty, "Token de autenticación no disponible. Por favor, inicia sesión.");
+            return Page();
+        }
+
         // Hacer la solicitud HTTP POST al servidor
         using (var client = new HttpClient())
         {
             try
             {
+                // Agregar el JWT al encabezado de la solicitud
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", jwtToken);
+
                 var response = await client.PostAsync("http://eva00:5050/register", content);
 
                 if (response.IsSuccessStatusCode)
                 {
                     // Si la solicitud es exitosa, redirige a la página de bienvenida
-                    ModelState.AddModelError(string.Empty, "Usuario registrado correctamente: " + response);
+                    ModelState.AddModelError(string.Empty, "Usuario registrado correctamente.");
                     return Page();
-
                 }
                 else
                 {
                     // Si la solicitud falla, muestra un mensaje de error
-                    ModelState.AddModelError(string.Empty, "Error en el registro: " + response);
+                    ModelState.AddModelError(string.Empty, "Error en el registro: " + response.ReasonPhrase);
                     return Page();
                 }
             }
             catch (HttpRequestException ex)
             {
                 // Manejar errores de red o problemas con el servidor
-
-
-                ModelState.AddModelError(string.Empty, "Error de red o problema con el servidor: " + ex);
+                ModelState.AddModelError(string.Empty, "Error de red o problema con el servidor: " + ex.Message);
                 return Page();
             }
         }
