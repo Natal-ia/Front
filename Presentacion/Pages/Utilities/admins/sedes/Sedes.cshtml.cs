@@ -9,9 +9,6 @@ using System.Threading.Tasks;
 public class SedeModel : PageModel
 {
     // Propiedades para el modelo de datos
-    [BindProperty]
-    [Required(ErrorMessage = "El ID es obligatorio.")]
-    public string? Id { get; set; }
 
     [BindProperty]
     [Required(ErrorMessage = "El nombre es obligatorio.")]
@@ -41,7 +38,6 @@ public class SedeModel : PageModel
         // Crear el objeto de datos para la solicitud
         var data = new
         {
-            id = Id,
             name = Name,
             address = Address,
             phoneNumber = PhoneNumber,
@@ -52,17 +48,27 @@ public class SedeModel : PageModel
         var json = JsonSerializer.Serialize(data);
         var content = new StringContent(json, Encoding.UTF8, "application/json");
 
+         // Obtener el JWT desde la sesión
+        var jwtToken = HttpContext.Session.GetString("JWT");
+        if (string.IsNullOrEmpty(jwtToken))
+        {
+            ModelState.AddModelError(string.Empty, "Token de autenticación no disponible. Por favor, inicia sesión.");
+            return Page();
+        }
+
         // Hacer la solicitud HTTP POST al servidor
         using (var client = new HttpClient())
         {
             try
             {
+                 // Agregar el JWT al encabezado de la solicitud
+                client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", jwtToken);
                 var response = await client.PostAsync("http://eva00:5050/api/sedes", content);
 
                 if (response.IsSuccessStatusCode)
                 {
                     // Si la solicitud es exitosa, redirige a la página de confirmación
-                    return RedirectToPage("/Success");
+                    return Redirect("/listar-sedes");
                 }
                 else
                 {
