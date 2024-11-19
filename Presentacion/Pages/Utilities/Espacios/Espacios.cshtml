@@ -41,7 +41,8 @@
                             <span>@horario.StartTime - @horario.EndTime</span>
                             @if (horario.Availavility)
                             {
-                                <button onclick="makeReservation('@espacio.Id', '@horario.Id')" class="btn btn-primary">Reservar</button>
+                                <button onclick="makeReservation('@espacio.Id', '@horario.Id')"
+                                    class="btn btn-primary">Reservar</button>
                             }
                             else
                             {
@@ -55,12 +56,15 @@
     }
 </ul>
 
-
 <script>
     // Mostrar/ocultar horarios
     function toggleHorario(id) {
-        const horarios = document.getElementById(horarios-${id});
-        horarios.style.display = horarios.style.display === "none" ? "block" : "none";
+        const horarios = document.getElementById(`horarios-${id}`);
+        if (horarios) {
+            horarios.style.display = horarios.style.display === "none" ? "block" : "none";
+        } else {
+            console.error("Element not found for ID:", id);
+        }
     }
 
     // Filtrar espacios por nombre
@@ -73,34 +77,78 @@
         });
     }
 
+  const userID = "@ViewData["UserID"]"; // Get the user ID from the server-side session
+    console.log("UserID from server-side session:", userID);
+
+    const userRole = "@ViewData["UserRole"]"; // Get the user role from the server-side session
+    console.log("UserRole from server-side session:", userRole);
+    
+    
+    const JWT = "@ViewData["JWT"]"; // Get the user role from the server-side session
+    console.log("JWT from server-side session:", JWT);
+
     async function makeReservation(espacioId, horarioId) {
-        const usuarioID = "usuario123"; // Ejemplo: Obtén esto dinámicamente
+        console.log("Attempting to make reservation...");
+        console.log("Espacio ID:", espacioId);
+        console.log("Horario ID:", horarioId);
+
+        const usuarioID = userID;
+       
+
         const reserva = {
-            usuarioID: usuarioID,
-            espacioID: espacioId,
-            horarioID: horarioId,
-            fechaAgendamiento: new Date().toISOString(),
-            fechaReserva: new Date().toISOString(),
-            estadoPago: "Pendiente"
+            EspacioId: espacioId,
+            HorarioId: horarioId,
+            FechaAgendamiento: new Date().toISOString().split('T')[0],  // Format as yyyy-MM-dd
+            FechaReserva: new Date().toISOString().split('T')[0],       // Format as yyyy-MM-dd
+            EstadoPago: "Pendiente"
         };
 
-        const response = await fetch('/api/reserva', {
-            method: 'PUT',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(reserva)
-        });
+        console.log("Reservation Payload:", reserva);
 
-        const result = await response.json();
+        // Get JWT token from localStorage or session (ensure this is stored securely)
+        const token = JWT;
+        if (!token) {
+            alert("No JWT token found. Please log in.");
+            return;
+        }
 
-        if (response.ok) {
-            alert("Reserva exitosa!");
-            // Marcar espacio como no disponible en la interfaz
-            location.reload();
-        } else {
-            alert("Hubo un problema con la reserva: " + result.message);
+        // You can also check the role here before making the request, if needed
+        if (userRole !== "Afiliado" && userRole !== "NoAfiliado") {
+            alert("No tiene permisos para realizar la reserva.");
+            return;
+        }
+
+        try {
+            const response = await fetch('http://eva00:5050/api/gestionReservas.gestionReservas/reservas/reserva', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Include the JWT token in the request header
+                },
+                body: JSON.stringify(reserva)
+            });
+
+            // Check if the response status is OK (2xx)
+            if (!response.ok) {
+                const errorMessage = await response.text();
+                console.error("Error response text:", errorMessage);
+                alert("Hubo un problema con la reserva: " + errorMessage);
+                return;
+            }
+
+            const result = await response.json();
+            console.log("Response Status:", response.status);
+            console.log("Response Data:", result);
+
+            if (response.ok) {
+                alert("Reserva exitosa!");
+                location.reload();
+            } else {
+                alert("Hubo un problema con la reserva: " + result.message);
+            }
+        } catch (error) {
+            console.error("Error making reservation:", error);
+            alert("Ocurrió un error al realizar la reserva. Ver consola para más detalles.");
         }
     }
 </script>
-

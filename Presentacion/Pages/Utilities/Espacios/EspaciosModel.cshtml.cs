@@ -20,6 +20,10 @@ namespace JaveFamilia.Pages
         public async Task OnGetAsync()
         {
             Espacios = await _espaciosController.GetEspaciosAsync();
+            ViewData["UserID"] = HttpContext.Session.GetString("UserID");
+            ViewData["UserRole"] = HttpContext.Session.GetString("UserRole");
+            ViewData["JWT"] = HttpContext.Session.GetString("JWT");
         }
+        
     }
 }

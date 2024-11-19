@@ -61,6 +61,15 @@ public class LoginModel : PageModel
                         // Leer y decodificar el token JWT
                         var jsonToken = handler.ReadToken(responseData.token) as JwtSecurityToken;
                         UserRole = jsonToken?.Claims.First(claim => claim.Type == "role").Value;
+                        HttpContext.Session.SetString("UserRole", UserRole);
+                        // Extraer el ID del usuario
+                        var userId = jsonToken?.Claims.First(claim => claim.Type == "sub").Value;
+                        // Guardar el ID del usuario en la sesión
+                        HttpContext.Session.SetString("UserID", userId);
+                        Console.WriteLine("Usuario ID: " + userId);
+
+                        var testUserId = HttpContext.Session.GetString("UserID");
+                        Console.WriteLine($"UserID stored in session: {testUserId}");
 
                         // Verificar el rol del usuario
                         if (UserRole == "Administrador")

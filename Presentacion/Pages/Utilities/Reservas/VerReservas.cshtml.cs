@@ -74,10 +74,10 @@ namespace JaveFamilia.Pages
 
         public void OnGet()
         {
-            var usuarioID = "user123"; // Simulación
+           /* var usuarioID = "user123"; // Simulación
             Reservas = ReservaController.Reservas
                         .Where(r => r.UsuarioID == usuarioID)
-                        .ToList();
+                        .ToList();*/
         }
     }
 }
