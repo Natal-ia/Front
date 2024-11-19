@@ -1,10 +1,12 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
+using System.IdentityModel.Tokens.Jwt;
 using System.Net.Http;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http; // Para HttpContext.Session
 
 public class LoginModel : PageModel
 {
@@ -50,24 +52,37 @@ public class LoginModel : PageModel
                     var responseBody = await response.Content.ReadAsStringAsync();
                     var responseData = JsonSerializer.Deserialize<LoginResponse>(responseBody);
 
-                    // Asumir que la respuesta incluye información sobre el rol del usuario
-                    UserRole = responseData?.Role;
+                    var handler = new JwtSecurityTokenHandler();
+                    if (responseData?.token != null)
+                    {
+                        // Guardar el JWT en la sesión
+                        HttpContext.Session.SetString("JWT", responseData.token);
 
-                    // Verificar el rol del usuario
-                    if (UserRole == "Administrador")
-                    {
-                        // Redirige al dashboard de administrador
-                        return RedirectToPage("/sedes");
-                    }
-                    else if (UserRole == "Afiliado")
-                    {
-                        // Redirige al dashboard de usuario
-                        return RedirectToPage("/espacios");
+                        // Leer y decodificar el token JWT
+                        var jsonToken = handler.ReadToken(responseData.token) as JwtSecurityToken;
+                        UserRole = jsonToken?.Claims.First(claim => claim.Type == "role").Value;
+
+                        // Verificar el rol del usuario
+                        if (UserRole == "Administrador")
+                        {
+                            // Redirige al dashboard de administrador
+                            return RedirectToPage("/sedes");
+                        }
+                        else if (UserRole == "Afiliado")
+                        {
+                            // Redirige al dashboard de afiliado
+                            return RedirectToPage("/espacios");
+                        }
+                        else
+                        {
+                            // Si el rol no es reconocido, muestra un error
+                            ModelState.AddModelError(string.Empty, "Acceso denegado. Rol no autorizado.");
+                            return Page();
+                        }
                     }
                     else
                     {
-                        // Si el rol no es reconocido, muestra un error
-                        ModelState.AddModelError(string.Empty, "Acceso denegado. Rol no autorizado.");
+                        ModelState.AddModelError(string.Empty, "Token no válido.");
                         return Page();
                     }
                 }
@@ -90,6 +105,6 @@ public class LoginModel : PageModel
     // Clase para deserializar la respuesta del servidor
     public class LoginResponse
     {
-        public string? Role { get; set; }
+        public string? token { get; set; }
     }
 }

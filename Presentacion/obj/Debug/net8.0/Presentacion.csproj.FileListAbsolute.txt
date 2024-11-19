@@ -66,3 +66,8 @@ C:/Users/natis/Documents/JaveFamilia-Presentacion/Presentacion/obj/Debug/net8.0/
 C:/Users/natis/Documents/JaveFamilia-Presentacion/Presentacion/obj/Debug/net8.0/Presenta.BC77CD05.Up2Date
 C:/Users/natis/Documents/JaveFamilia-Presentacion/Presentacion/obj/Debug/net8.0/Presentacion.genruntimeconfig.cache
 C:/Users/natis/Documents/JaveFamilia-Presentacion/Presentacion/obj/Debug/net8.0/ref/Presentacion.dll
+/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/bin/Debug/net8.0/Microsoft.IdentityModel.Abstractions.dll
+/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/bin/Debug/net8.0/Microsoft.IdentityModel.JsonWebTokens.dll
+/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/bin/Debug/net8.0/Microsoft.IdentityModel.Logging.dll
+/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/bin/Debug/net8.0/Microsoft.IdentityModel.Tokens.dll
+/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/bin/Debug/net8.0/System.IdentityModel.Tokens.Jwt.dll

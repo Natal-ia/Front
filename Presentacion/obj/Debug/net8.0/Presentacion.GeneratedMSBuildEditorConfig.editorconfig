@@ -26,6 +26,14 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Pages/Shared/_LayoutAdmin.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXRBZG1pbi5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Pages/Shared/_LayoutAfiliado.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19MYXlvdXRBZmlsaWFkby5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU2hhcmVkL19WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
@@ -36,6 +44,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/admins/sedes/Sedes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXRpbGl0aWVzL2FkbWlucy9zZWRlcy9TZWRlcy5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/admins/usuarios/registrarUsuario.cshtml]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVXRpbGl0aWVzL2FkbWlucy91c3Vhcmlvcy9yZWdpc3RyYXJVc3VhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/home/ubuntu-naing/javefamilia/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/Espacios/Espacios.cshtml]

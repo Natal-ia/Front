@@ -5,6 +5,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddHttpClient<EspaciosController>();
 builder.Services.AddHttpClient<ReservaController>();
+builder.Services.AddSession();
 // Add services to the container.
 builder.Services.AddRazorPages();
 
@@ -18,9 +19,10 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
+app.UseSession(); 
 app.UseRouting();
 
 app.UseAuthorization();
