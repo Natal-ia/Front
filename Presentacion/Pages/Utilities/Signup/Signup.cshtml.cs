@@ -85,7 +85,7 @@ public class SignupModel : PageModel
                 if (response.IsSuccessStatusCode)
                 {
                     // Si la solicitud es exitosa, redirige a la página de bienvenida
-                    return RedirectToPage("/login");
+                    return Redirect("/login");
                 }
                 else
                 {

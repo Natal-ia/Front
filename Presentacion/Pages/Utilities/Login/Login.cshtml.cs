@@ -66,12 +66,12 @@ public class LoginModel : PageModel
                         if (UserRole == "Administrador")
                         {
                             // Redirige al dashboard de administrador
-                            return RedirectToPage("/sedes");
+                            return Redirect("/sedes");
                         }
                         else if (UserRole == "Afiliado")
                         {
                             // Redirige al dashboard de afiliado
-                            return RedirectToPage("/espacios");
+                            return Redirect("/espacios");
                         }
                         else
                         {
