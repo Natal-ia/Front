@@ -254,19 +254,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\natis\\.nuget\\packages\\": {}
+    "C:\\Users\\Natalia Mejia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\natis\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj",
+      "projectUniqueName": "C:\\Users\\Natalia Mejia\\OneDrive - Gimnasio Femenino\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj",
       "projectName": "Presentacion",
-      "projectPath": "C:\\Users\\natis\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj",
-      "packagesPath": "C:\\Users\\natis\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\natis\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\obj\\",
+      "projectPath": "C:\\Users\\Natalia Mejia\\OneDrive - Gimnasio Femenino\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\Presentacion.csproj",
+      "packagesPath": "C:\\Users\\Natalia Mejia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Natalia Mejia\\OneDrive - Gimnasio Femenino\\Desktop\\JaveFamilia-Presentacion\\Presentacion\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\natis\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\Natalia Mejia\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net8.0"
@@ -323,7 +323,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.404/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

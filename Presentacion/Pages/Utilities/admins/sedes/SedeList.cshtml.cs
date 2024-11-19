@@ -13,6 +13,7 @@ public class SedeListModel : PageModel
     // Cargar las sedes al cargar la página
     public async Task OnGetAsync()
     {
+        ViewData["UserRole"] = HttpContext.Session.GetString("UserRole");
         using (var client = new HttpClient())
         {
             try

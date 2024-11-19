@@ -9,71 +9,71 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = Presentacion
 build_property.RootNamespace = Presentacion
-build_property.ProjectDir = C:\Users\natis\Desktop\JaveFamilia-Presentacion\Presentacion\
+build_property.ProjectDir = C:\Users\Natalia Mejia\OneDrive - Gimnasio Femenino\Desktop\JaveFamilia-Presentacion\Presentacion\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\natis\Desktop\JaveFamilia-Presentacion\Presentacion
+build_property.MSBuildProjectDirectory = C:\Users\Natalia Mejia\OneDrive - Gimnasio Femenino\Desktop\JaveFamilia-Presentacion\Presentacion
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Error.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Index.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Shared/_LayoutAdmin.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Shared/_LayoutAdmin.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRBZG1pbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Shared/_LayoutAfiliado.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Shared/_LayoutAfiliado.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXRBZmlsaWFkby5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Shared/_ValidationScriptsPartial.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/admins/sedes/SedeList.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/admins/sedes/SedeList.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXRpbGl0aWVzXGFkbWluc1xzZWRlc1xTZWRlTGlzdC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/admins/sedes/Sedes.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/admins/sedes/Sedes.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXRpbGl0aWVzXGFkbWluc1xzZWRlc1xTZWRlcy5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/admins/usuarios/registrarUsuario.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/admins/usuarios/registrarUsuario.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXRpbGl0aWVzXGFkbWluc1x1c3Vhcmlvc1xyZWdpc3RyYXJVc3VhcmlvLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/Espacios/Espacios.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/Espacios/Espacios.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXRpbGl0aWVzXEVzcGFjaW9zXEVzcGFjaW9zLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/Login/Login.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/Login/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXRpbGl0aWVzXExvZ2luXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/Reservas/VerReservas.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/Reservas/VerReservas.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXRpbGl0aWVzXFJlc2VydmFzXFZlclJlc2VydmFzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/Signup/Signup.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Utilities/Signup/Signup.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcVXRpbGl0aWVzXFNpZ251cFxTaWdudXAuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/_ViewImports.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/_ViewStart.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/natis/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Shared/_Layout.cshtml]
+[C:/Users/Natalia Mejia/OneDrive - Gimnasio Femenino/Desktop/JaveFamilia-Presentacion/Presentacion/Pages/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = UGFnZXNcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-ormly53atb

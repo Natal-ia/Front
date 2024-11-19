@@ -3,6 +3,7 @@ using JaveFamilia.Controllers;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddHttpClient<EspaciosController>();
 builder.Services.AddHttpClient<ReservaController>();
 builder.Services.AddSession();

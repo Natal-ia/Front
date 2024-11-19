@@ -66,18 +66,19 @@ public class LoginModel : PageModel
                         var userId = jsonToken?.Claims.First(claim => claim.Type == "sub").Value;
                         // Guardar el ID del usuario en la sesión
                         HttpContext.Session.SetString("UserID", userId);
-                        Console.WriteLine("Usuario ID: " + userId);
+                       
 
                         var testUserId = HttpContext.Session.GetString("UserID");
-                        Console.WriteLine($"UserID stored in session: {testUserId}");
+                      
 
                         // Verificar el rol del usuario
                         if (UserRole == "Administrador")
                         {
+                         
                             // Redirige al dashboard de administrador
-                            return Redirect("/sedes");
+                            return Redirect("/listar-sedes");
                         }
-                        else if (UserRole == "Afiliado")
+                        else if (UserRole == "Afiliado" || UserRole=="NoAfiliado")
                         {
                             // Redirige al dashboard de afiliado
                             return Redirect("/espacios");

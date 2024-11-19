@@ -1,42 +1,32 @@
-using Microsoft.AspNetCore.Mvc;
+using System.Net.Http;
+using System.Text.Json;
+using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Http;
 using JaveFamilia.Models;
 
 namespace JaveFamilia.Controllers
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ReservaController : ControllerBase
+    public class ReservaController
     {
-/*        private static List<Reserva> reservas = new List<Reserva>();
+        private readonly HttpClient _httpClient;
 
-        [HttpPut]
-        [HttpPut]
-        public IActionResult Put([FromBody] Reserva nuevaReserva)
+        public ReservaController(HttpClient httpClient)
         {
-            var usuarioId = HttpContext.Session.GetString("UserID"); // Obtener el ID del usuario de la sesión
-
-            if (string.IsNullOrEmpty(usuarioId) ||
-                string.IsNullOrEmpty(nuevaReserva.EspacioID) ||
-                string.IsNullOrEmpty(nuevaReserva.HorarioID))
-            {
-                return BadRequest(new { message = "Datos incompletos para la reserva." });
-            }
-
-            nuevaReserva.UsuarioID = usuarioId; // Establecer el ID del usuario en la reserva
-            nuevaReserva.EstadoPago = EstadoPago.Exitoso;
-
-            reservas.Add(nuevaReserva);
-
-            return Ok(nuevaReserva);
+            _httpClient = httpClient;
         }
 
-
-
-        [HttpGet("{usuarioID}")]
-        public IActionResult GetByUsuario(string usuarioID)
+        public async Task<List<Reserva>> GetReservasAsync(string usuarioId)
         {
-            var userReservas = reservas.Where(r => r.UsuarioID == usuarioID).ToList();
-            return Ok(userReservas);
-        }*/
+            // Llamada al endpoint de la API
+            var response = await _httpClient.GetAsync("http://eva00:5050/api/gestionReservas.gestionReservas/reservas/reservas");
+            response.EnsureSuccessStatusCode();
+
+            var json = await response.Content.ReadAsStringAsync();
+            var reservas = JsonSerializer.Deserialize<List<Reserva>>(json, new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+
+            // Filtrar por usuarioId
+            return reservas.FindAll(r => r.UsuarioID == usuarioId);
+        }
     }
 }

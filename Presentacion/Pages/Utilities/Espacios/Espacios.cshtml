@@ -80,9 +80,8 @@
   const userID = "@ViewData["UserID"]"; // Get the user ID from the server-side session
     console.log("UserID from server-side session:", userID);
 
-    const userRole = "@ViewData["UserRole"]"; // Get the user role from the server-side session
-    console.log("UserRole from server-side session:", userRole);
-    
+    //Const userRole = "@ViewData["UserRole"]"; 
+    //console.log("UserRole from server-side session:", userRole);
     
     const JWT = "@ViewData["JWT"]"; // Get the user role from the server-side session
     console.log("JWT from server-side session:", JWT);
@@ -119,7 +118,7 @@
         }
 
         try {
-            const response = await fetch('http://eva00:5050/api/gestionReservas.gestionReservas/reservas/reserva', {
+            const response = await fetch('http://eva00:5050/api/gestionReservas/gestionReservas/reservas/reserva', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
