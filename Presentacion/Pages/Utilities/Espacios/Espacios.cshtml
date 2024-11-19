@@ -1,0 +1,154 @@
+@page "/espacios"
+@model JaveFamilia.Pages.EspaciosModel
+@{
+    ViewData["Title"] = "Espacios Disponibles";
+}
+
+
+<head>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+
+
+
+<h1>Espacios Disponibles</h1>
+
+<!-- Barra buscadora -->
+<input type="text" id="searchBar" placeholder="Buscar espacios..." oninput="filterSpaces()" class="search-bar" />
+
+<!-- Lista de espacios -->
+<ul id="spacesList">
+    @foreach (var espacio in Model.Espacios)
+    {
+        <li class="space-item">
+            <div class="space-info">
+                <h2>@espacio.Name</h2>
+                <p>@espacio.Description</p>
+                <p>Horario: @espacio.OpeningTime - @espacio.ClosingTime</p>
+                <p>Capacidad: @espacio.Capacity personas</p>
+                <p>Tarifa de afiliado: $@espacio.AffiliateRate</p>
+                <p>Tarifa de no Afiliado: $@espacio.NonAffiliateRate</p>
+                <p>Tarifa de beneficiario: $@espacio.BeneficiaryRate</p>
+            </div>
+
+            <!-- Contenedor de horarios -->
+            <div class="horarios-container">
+                <h3>Horarios disponibles</h3>
+                <ul id="horarios-@espacio.Id" class="horarios">
+                    @foreach (var horario in espacio.Horarios)
+                    {
+                        <li>
+                            <span>@horario.StartTime - @horario.EndTime</span>
+                            @if (horario.Availavility)
+                            {
+                                <button onclick="makeReservation('@espacio.Id', '@horario.Id')"
+                                    class="btn btn-primary">Reservar</button>
+                            }
+                            else
+                            {
+                                <button class="btn btn-secondary" disabled>No Disponible</button>
+                            }
+                        </li>
+                    }
+                </ul>
+            </div>
+        </li>
+    }
+</ul>
+
+<script>
+    // Mostrar/ocultar horarios
+    function toggleHorario(id) {
+        const horarios = document.getElementById(`horarios-${id}`);
+        if (horarios) {
+            horarios.style.display = horarios.style.display === "none" ? "block" : "none";
+        } else {
+            console.error("Element not found for ID:", id);
+        }
+    }
+
+    // Filtrar espacios por nombre
+    function filterSpaces() {
+        const query = document.getElementById("searchBar").value.toLowerCase();
+        const items = document.querySelectorAll(".space-item");
+        items.forEach(item => {
+            const spaceName = item.querySelector("h2").textContent.toLowerCase();
+            item.style.display = spaceName.includes(query) ? "block" : "none";
+        });
+    }
+
+  const userID = "@ViewData["UserID"]"; // Get the user ID from the server-side session
+    console.log("UserID from server-side session:", userID);
+
+    const userRole = "@ViewData["UserRole"]"; // Get the user role from the server-side session
+    console.log("UserRole from server-side session:", userRole);
+    
+    
+    const JWT = "@ViewData["JWT"]"; // Get the user role from the server-side session
+    console.log("JWT from server-side session:", JWT);
+
+    async function makeReservation(espacioId, horarioId) {
+        console.log("Attempting to make reservation...");
+        console.log("Espacio ID:", espacioId);
+        console.log("Horario ID:", horarioId);
+
+        const usuarioID = userID;
+       
+
+        const reserva = {
+            EspacioId: espacioId,
+            HorarioId: horarioId,
+            FechaAgendamiento: new Date().toISOString().split('T')[0],  // Format as yyyy-MM-dd
+            FechaReserva: new Date().toISOString().split('T')[0],       // Format as yyyy-MM-dd
+            EstadoPago: "Pendiente"
+        };
+
+        console.log("Reservation Payload:", reserva);
+
+        // Get JWT token from localStorage or session (ensure this is stored securely)
+        const token = JWT;
+        if (!token) {
+            alert("No JWT token found. Please log in.");
+            return;
+        }
+
+        // You can also check the role here before making the request, if needed
+        if (userRole !== "Afiliado" && userRole !== "NoAfiliado") {
+            alert("No tiene permisos para realizar la reserva.");
+            return;
+        }
+
+        try {
+            const response = await fetch('http://eva00:5050/api/gestionReservas.gestionReservas/reservas/reserva', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${token}` // Include the JWT token in the request header
+                },
+                body: JSON.stringify(reserva)
+            });
+
+            // Check if the response status is OK (2xx)
+            if (!response.ok) {
+                const errorMessage = await response.text();
+                console.error("Error response text:", errorMessage);
+                alert("Hubo un problema con la reserva: " + errorMessage);
+                return;
+            }
+
+            const result = await response.json();
+            console.log("Response Status:", response.status);
+            console.log("Response Data:", result);
+
+            if (response.ok) {
+                alert("Reserva exitosa!");
+                location.reload();
+            } else {
+                alert("Hubo un problema con la reserva: " + result.message);
+            }
+        } catch (error) {
+            console.error("Error making reservation:", error);
+            alert("Ocurrió un error al realizar la reserva. Ver consola para más detalles.");
+        }
+    }
+</script>
