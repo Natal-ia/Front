@@ -1,10 +1,79 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container-landing">
+    <div class="content-box">
+        <div class="text-container">
+            <h1 class="main-title">Bienvenidos a JaveFamilia</h1>
+            <p class="description">Tu caja de compensación familiar. Brindando bienestar y oportunidades para todos.</p>
+        </div>
+        <div class="image-container">
+            <img class="image" src="https://images.pexels.com/photos/5119595/pexels-photo-5119595.jpeg" alt="Imagen de bienvenida">
+        </div>
+    </div>
 </div>
+
+<style>
+/* General Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    height: 100%;
+    background-color: #f8f8f8;
+}
+
+/* Main container */
+.container-landing {
+    padding: 2rem;
+
+    height: 100vh;
+}
+
+/* Content box with text on left and image on right */
+.content-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    height: auto;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 1rem;
+    overflow: hidden;
+    padding: 2rem;
+}
+
+/* Text container */
+.text-container {
+    flex: 1;
+    padding-right: 2rem;
+}
+
+.main-title {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.description {
+    font-size: 1.2rem;
+    color: #666;
+    line-height: 1.6;
+}
+
+/* Image container */
+.image-container {
+    flex: 1;
+}
+
+.image {
+    width: 100%;
+    height: auto;
+    border-radius: 1rem;
+}
+</style>
